@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <EditText
+        android:layout_gravity="center"
+        android:id="@+id/et"
+        android:inputType="number"
+        android:textSize="20sp"
+        android:hint="@string/fifteensec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:onClick="click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hitnumber"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="right"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/StarRepeating"
+        android:text="开始"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/StopRepeating"
+            android:text="停止"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+</LinearLayout>
