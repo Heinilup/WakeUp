@@ -44,6 +44,9 @@ public class MainActivity extends Activity {
         mToast.show();
 
     }
+
+
+
     private View.OnClickListener mStartRepeatingListener = new View.OnClickListener() {
         public void onClick(View v) {
 
@@ -58,16 +61,18 @@ public class MainActivity extends Activity {
             intent.setAction(".AlarmActivity");
             PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this,
                     0, intent, 0);
-
-            // We want the alarm to go off 30 seconds from now.
+            /*Get the setTime from SharedPreference*/
+            SharedPreferences sp = getSharedPreferences("sec", MODE_PRIVATE);
+            String setTime = sp.getString("setNumber", "");
+            //Set first Wake Up time 10sec.
             long firstTime = SystemClock.elapsedRealtime();
-            firstTime += 20*1000;
+            firstTime += 10*1000;
 
 
             // Schedule the alarm!
             AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
             am.setRepeating(AlarmManager.RTC_WAKEUP,
-                    firstTime, 20*1000, sender);
+                    firstTime, Long.parseLong(setTime)*1000, sender);
             // Tell the user about what we did.
             if (mToast != null) {
                 mToast.cancel();
@@ -86,7 +91,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 // Create the same intent, and thus a matching IntentSender, for
                 // the one that was scheduled.
-                Intent intent = new Intent();
+                Intent intent = new Intent(MainActivity.this, RepeatingAlarm.class);
                 PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this,
                         0, intent, 0);
 
@@ -104,5 +109,7 @@ public class MainActivity extends Activity {
             }
         };
     }
+
+
 }
 
