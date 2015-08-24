@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">WakeUp</string>
 
-    <string name="fifteensec">点击输入循环秒数</string>
+    <string name="fifteensec">请输入循环时间（秒）</string>
     <string name="action_settings">Settings</string>
-    <string name="repeating_received">已经启动循环唤醒</string>
-    <string name="repeating_scheduled">**点亮屏幕**</string>
+    <string name="repeating_scheduled">已经启动循环唤醒计划</string>
     <string name="repeating_unscheduled">已经取消循环唤醒计划</string>
     <string name="repeating_wake">唤醒</string>
     <string name="hitnumber">保存</string>
