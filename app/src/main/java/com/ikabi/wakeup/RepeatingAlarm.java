@@ -22,7 +22,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
-import android.widget.Toast;
 
 /**
  * This is an example of implement an {@link BroadcastReceiver} for an alarm that
@@ -36,8 +35,6 @@ public class RepeatingAlarm extends BroadcastReceiver
         PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.SCREEN_DIM_WAKE_LOCK, "bright");
         //点亮屏幕
         wl.acquire();
-        Toast.makeText(context, R.string.repeating_wake,
-                Toast.LENGTH_LONG).show();
         //释放
         wl.release();
     }

@@ -58,7 +58,6 @@ public class MainActivity extends Activity {
             // Note that unlike above, this IntentSender is configured to
             // allow itself to be sent multiple times.
             Intent intent = new Intent(MainActivity.this, RepeatingAlarm.class);
-            intent.setAction(".AlarmActivity");
             PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this,
                     0, intent, 0);
             /*Get the setTime from SharedPreference*/
@@ -85,6 +84,7 @@ public class MainActivity extends Activity {
     };
 
     private View.OnClickListener mStopRepeatingListener;
+
 
     {
         mStopRepeatingListener = new View.OnClickListener() {
