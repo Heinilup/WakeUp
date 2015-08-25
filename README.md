@@ -64,3 +64,4 @@
             </intent-filter>
         </receiver>
 + 目前有BUG问题，停止广播失效 ，保存时间待添加
++ 08/24 已经解决这个问题由于广播接受者Recevie里面TOAST引起的错误。
