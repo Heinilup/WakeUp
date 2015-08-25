@@ -9,4 +9,6 @@
     <string name="hitnumber">保存</string>
     <string name="saved">保存成功</string>
     <string name="miao">秒</string>
+    <string name="ClearShare">清除成功</string>
+    <string name="repeatwake">循环唤醒</string>
 </resources>

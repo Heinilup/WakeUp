@@ -13,14 +13,19 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
 
 public class MainActivity extends Activity {
     Toast mToast;
+    private TextView resultText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TextView showtime = (TextView) findViewById(R.id.showtime);
+
         final Window win = getWindow();
         win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
                 | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
@@ -45,6 +50,23 @@ public class MainActivity extends Activity {
 
     }
 
+    public void click1(View v){
+        SharedPreferences settings = getSharedPreferences("count", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.remove("count");
+        editor.apply();
+        mToast = Toast.makeText(MainActivity.this, R.string.ClearShare,
+                Toast.LENGTH_LONG);
+        mToast.setGravity(Gravity.CENTER, 0, 0);
+        mToast.show();
+
+    }
+    public void click2(View v){
+        SharedPreferences showtime = getSharedPreferences("count", MODE_PRIVATE);
+        String timeValue = showtime.getString("count", String.valueOf(1));
+        resultText.setText("次数：" + String.valueOf(timeValue));
+
+    }
 
 
     private View.OnClickListener mStartRepeatingListener = new View.OnClickListener() {
@@ -63,6 +85,7 @@ public class MainActivity extends Activity {
             /*Get the setTime from SharedPreference*/
             SharedPreferences sp = getSharedPreferences("sec", MODE_PRIVATE);
             String setTime = sp.getString("setNumber", "");
+
             //Set first Wake Up time 10sec.
             long firstTime = SystemClock.elapsedRealtime();
             firstTime += 10*1000;
