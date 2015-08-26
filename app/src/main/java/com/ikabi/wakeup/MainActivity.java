@@ -6,7 +6,8 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.SystemClock;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -18,30 +19,50 @@ import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
+    TextView textView;
     Toast mToast;
-    private TextView resultText;
+    private static final int msgKey1 = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TextView showtime = (TextView) findViewById(R.id.showtime);
-
         final Window win = getWindow();
         win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
                 | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
                 | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                 | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
         setContentView(R.layout.activity_main);
-
+        textView = (TextView) findViewById(R.id.showtime);
+//        SharedPreferences preferences = getSharedPreferences("count", MODE_PRIVATE);
+//        int count = preferences.getInt("count", 0);
+//        textView.setText("唤醒总次数：" + count);
         Button button = (Button)findViewById(R.id.StarRepeating);
         button.setOnClickListener(mStartRepeatingListener);
         button = (Button)findViewById(R.id.StopRepeating);
         button.setOnClickListener(mStopRepeatingListener);
+        new TimeThread().start();
     }
+    public class TimeThread extends Thread {
+        @Override
+        public void run () {
+            do {
+                try {
+                    Thread.sleep(1000);
+                    Message msg = new Message();
+                    msg.what = msgKey1;
+                    mHandler.sendMessage(msg);
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } while(true);
+        }
+    }
+
 
     public void click(View v){
         EditText et = (EditText) findViewById(R.id.et);
-        SharedPreferences sp = getSharedPreferences("sec", MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("sec", MODE_MULTI_PROCESS);
         sp.edit().putString("setNumber", et.getText().toString()).apply();
         mToast = Toast.makeText(MainActivity.this, R.string.saved,
                 Toast.LENGTH_LONG);
@@ -51,7 +72,7 @@ public class MainActivity extends Activity {
     }
 
     public void click1(View v){
-        SharedPreferences settings = getSharedPreferences("count", MODE_PRIVATE);
+        SharedPreferences settings = getSharedPreferences("count", MODE_MULTI_PROCESS);
         SharedPreferences.Editor editor = settings.edit();
         editor.remove("count");
         editor.apply();
@@ -62,12 +83,29 @@ public class MainActivity extends Activity {
 
     }
     public void click2(View v){
-        SharedPreferences showtime = getSharedPreferences("count", MODE_PRIVATE);
-        String timeValue = showtime.getString("count", String.valueOf(1));
-        resultText.setText("次数：" + String.valueOf(timeValue));
+        SharedPreferences preferences = getSharedPreferences("count", MODE_MULTI_PROCESS);
+
+        int count = preferences.getInt("count", 0);
+        Toast.makeText(MainActivity.this, "唤醒已经被使用了" + count + "次。"
+               , Toast.LENGTH_LONG).show();
 
     }
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage (Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case msgKey1:
+                    SharedPreferences sp = getSharedPreferences("count", MODE_MULTI_PROCESS);
+                    int count = sp.getInt("count", 0);
+                    textView.setText("唤醒次数：" + count);
+                    break;
 
+                default:
+                    break;
+            }
+        }
+    };
 
     private View.OnClickListener mStartRepeatingListener = new View.OnClickListener() {
         public void onClick(View v) {
@@ -86,15 +124,15 @@ public class MainActivity extends Activity {
             SharedPreferences sp = getSharedPreferences("sec", MODE_PRIVATE);
             String setTime = sp.getString("setNumber", "");
 
-            //Set first Wake Up time 10sec.
-            long firstTime = SystemClock.elapsedRealtime();
-            firstTime += 10*1000;
+//            //Set first Wake Up time 5sec.
+//            long firstTime = SystemClock.elapsedRealtime();
+//            firstTime += 15*1000;
 
 
             // Schedule the alarm!
             AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
             am.setRepeating(AlarmManager.RTC_WAKEUP,
-                    firstTime, Long.parseLong(setTime)*1000, sender);
+                    0, Long.parseLong(setTime)*1000, sender);
             // Tell the user about what we did.
             if (mToast != null) {
                 mToast.cancel();
@@ -132,7 +170,5 @@ public class MainActivity extends Activity {
             }
         };
     }
-
-
 }
 

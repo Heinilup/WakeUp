@@ -34,7 +34,7 @@ public class RepeatingAlarm extends BroadcastReceiver
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        SharedPreferences preferences = context.getSharedPreferences("count", context.MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences("count", context.MODE_MULTI_PROCESS);
         preferences.edit().putInt("count", Integer.parseInt("0"));
         int count = preferences.getInt("count", 0);
 //        Toast.makeText(context, "唤醒已经被使用了" + count + "次。"

@@ -10,5 +10,7 @@
     <string name="saved">保存成功</string>
     <string name="miao">秒</string>
     <string name="ClearShare">清除成功</string>
-    <string name="repeatwake">循环唤醒</string>
+    <string name="repeatwake">屏幕循环唤醒</string>
+    <string name="hitstart">点击开始</string>
+    <string name="hitstop">点击停止</string>
 </resources>
