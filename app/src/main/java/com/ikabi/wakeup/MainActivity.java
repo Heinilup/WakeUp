@@ -124,15 +124,11 @@ public class MainActivity extends Activity {
             SharedPreferences sp = getSharedPreferences("sec", MODE_PRIVATE);
             String setTime = sp.getString("setNumber", "");
 
-//            //Set first Wake Up time 5sec.
-//            long firstTime = SystemClock.elapsedRealtime();
-//            firstTime += 15*1000;
-
 
             // Schedule the alarm!
             AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
             am.setRepeating(AlarmManager.RTC_WAKEUP,
-                    0, Long.parseLong(setTime)*1000, sender);
+                    (System.currentTimeMillis() + Long.parseLong(setTime)*1000), Long.parseLong(setTime)*1000, sender);
             // Tell the user about what we did.
             if (mToast != null) {
                 mToast.cancel();
