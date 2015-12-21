@@ -18,10 +18,13 @@ package com.ikabi.wakeup;
 
 // Need the following import to get access to the app resources, since this
 // class is in a sub-package.
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.PowerManager;
+import android.util.Log;
 
 /**
  * This is an example of implement an {@link BroadcastReceiver} for an alarm that
@@ -29,14 +32,29 @@ import android.os.PowerManager;
  */
 public class RepeatingAlarm extends BroadcastReceiver
 {
+
     @Override
     public void onReceive(Context context, Intent intent) {
+        SharedPreferences preferences = context.getSharedPreferences("count", context.MODE_MULTI_PROCESS);
+        preferences.edit().putInt("count", Integer.parseInt("0"));
+        int count = preferences.getInt("count", 0);
+//        Toast.makeText(context, "唤醒已经被使用了" + count + "次。"
+//                , Toast.LENGTH_LONG).show();
+        SharedPreferences.Editor editor = preferences.edit();
+        // 存入数据
+        editor.putInt("count", ++count);
+        // 提交修改
+        editor.apply();
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.SCREEN_DIM_WAKE_LOCK, "bright");
+        Log.i("sj", "pm =" + wl);
         //点亮屏幕
         wl.acquire();
+
         //释放
-        wl.release();
+            wl.release();
+
     }
+
     }
 

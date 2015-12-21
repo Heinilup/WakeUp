@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WakeUp</string>
+    <string name="app_name">AwakeNoSleep</string>
 
     <string name="fifteensec">请输入循环时间（秒）</string>
     <string name="action_settings">Settings</string>
@@ -9,4 +9,9 @@
     <string name="hitnumber">保存</string>
     <string name="saved">保存成功</string>
     <string name="miao">秒</string>
+    <string name="ClearShare">清除成功</string>
+    <string name="repeatwake">屏幕循环唤醒</string>
+    <string name="hitstart">点击开始</string>
+    <string name="hitstop">点击停止</string>
+    <string name="screenOff">10秒后关屏开启灭屏不休眠</string>
 </resources>

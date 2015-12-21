@@ -4,8 +4,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical">
+    <TextView
+        android:textSize="38sp"
+        android:layout_marginTop="10dp"
+        android:text="@string/repeatwake"
+        android:textColor="#026fc2"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,6 +30,8 @@
         android:layout_height="wrap_content" />
         <TextView
             android:textSize="30sp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginBottom="3dp"
             android:text="@string/miao"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
@@ -30,23 +41,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hitnumber"/>
+
         </LinearLayout>
 
     <LinearLayout
-        android:layout_gravity="right"
+        android:layout_gravity="center"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content">
+        <Button
+            android:onClick="click2"
+            android:text="唤醒次数"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:onClick="click1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清除记录"/>
     <Button
         android:id="@+id/StarRepeating"
-        android:text="开始"
+        android:text="@string/hitstart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
         <Button
             android:id="@+id/StopRepeating"
-            android:text="停止"
+            android:text="@string/hitstop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         </LinearLayout>
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/showtime"
+            android:text="唤醒总次数"
+            android:textSize="30sp"
+            android:textColor="#58a10b"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 
 </LinearLayout>
