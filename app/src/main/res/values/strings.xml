@@ -13,5 +13,8 @@
     <string name="repeatwake">屏幕循环唤醒</string>
     <string name="hitstart">点击开始</string>
     <string name="hitstop">点击停止</string>
+<<<<<<< HEAD
     <string name="screenOff">10秒后关屏开启灭屏不休眠</string>
+=======
+>>>>>>> origin/master
 </resources>

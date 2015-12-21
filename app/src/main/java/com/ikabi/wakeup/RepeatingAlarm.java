@@ -45,6 +45,10 @@ public class RepeatingAlarm extends BroadcastReceiver
         editor.putInt("count", ++count);
         // 提交修改
         editor.apply();
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.SCREEN_DIM_WAKE_LOCK, "bright");
         Log.i("sj", "pm =" + wl);

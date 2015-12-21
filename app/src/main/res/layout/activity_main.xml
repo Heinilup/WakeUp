@@ -8,7 +8,10 @@
         android:textSize="38sp"
         android:layout_marginTop="10dp"
         android:text="@string/repeatwake"
+<<<<<<< HEAD
         android:textColor="#026fc2"
+=======
+>>>>>>> origin/master
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -77,7 +80,10 @@
             android:id="@+id/showtime"
             android:text="唤醒总次数"
             android:textSize="30sp"
+<<<<<<< HEAD
             android:textColor="#58a10b"
+=======
+>>>>>>> origin/master
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

@@ -8,8 +8,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+<<<<<<< HEAD
 import android.os.PowerManager;
 import android.util.Log;
+=======
+>>>>>>> origin/master
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -21,6 +24,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
+<<<<<<< HEAD
     private static final int DELAY = 0;
     TextView textView;
     Toast mToast;
@@ -28,6 +32,10 @@ public class MainActivity extends Activity {
     private PendingIntent sender;
     private Intent intent;
 
+=======
+    TextView textView;
+    Toast mToast;
+>>>>>>> origin/master
     private static final int msgKey1 = 1;
 
     @Override
@@ -90,6 +98,7 @@ public class MainActivity extends Activity {
                 Toast.LENGTH_LONG);
         mToast.setGravity(Gravity.CENTER, 0, 0);
         mToast.show();
+<<<<<<< HEAD
 
     }
     public void click2(View v){
@@ -98,6 +107,34 @@ public class MainActivity extends Activity {
         int count = preferences.getInt("count", 0);
         Toast.makeText(MainActivity.this, "唤醒已经被使用了" + count + "次。"
                , Toast.LENGTH_LONG).show();
+=======
+
+    }
+    public void click2(View v){
+        SharedPreferences preferences = getSharedPreferences("count", MODE_MULTI_PROCESS);
+
+        int count = preferences.getInt("count", 0);
+        Toast.makeText(MainActivity.this, "唤醒已经被使用了" + count + "次。"
+               , Toast.LENGTH_LONG).show();
+
+    }
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage (Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case msgKey1:
+                    SharedPreferences sp = getSharedPreferences("count", MODE_MULTI_PROCESS);
+                    int count = sp.getInt("count", 0);
+                    textView.setText("唤醒次数：" + count);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    };
+>>>>>>> origin/master
 
     }
     private Runnable clock = new Runnable() {
@@ -158,6 +195,11 @@ public class MainActivity extends Activity {
             // Note that unlike above, this IntentSender is configured to
             // allow itself to be sent multiple times.
             /*Get the setTime from SharedPreference*/
+<<<<<<< HEAD
+=======
+            SharedPreferences sp = getSharedPreferences("sec", MODE_PRIVATE);
+            String setTime = sp.getString("setNumber", "");
+>>>>>>> origin/master
 
 
             SharedPreferences sp = getSharedPreferences("sec", MODE_PRIVATE);
@@ -166,9 +208,14 @@ public class MainActivity extends Activity {
             /*// Schedule the alarm!
             AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
             am.setRepeating(AlarmManager.RTC_WAKEUP,
+<<<<<<< HEAD
                     (System.currentTimeMillis() + Long.parseLong(setTime) * 1000), Long.parseLong(setTime) * 1000, sender);
             // Tell the user about what we did.*/
             mHandler.postDelayed(clock,Long.parseLong(setTime) * 1000);
+=======
+                    (System.currentTimeMillis() + Long.parseLong(setTime)*1000), Long.parseLong(setTime)*1000, sender);
+            // Tell the user about what we did.
+>>>>>>> origin/master
             if (mToast != null) {
                 mToast.cancel();
             }
