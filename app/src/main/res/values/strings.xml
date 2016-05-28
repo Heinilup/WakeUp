@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AwakeNoSleep</string>
+    <string name="app_name">WakeUp_Sensor</string>
 
     <string name="fifteensec">请输入循环时间（秒）</string>
     <string name="action_settings">Settings</string>
@@ -14,4 +14,21 @@
     <string name="hitstart">点击开始</string>
     <string name="hitstop">点击停止</string>
     <string name="screenOff">10秒后关屏开启灭屏不休眠</string>
+    <string name="wakeup_times_close">wakeup_times_close</string>
+
+    <string name="orientation">方向传感器返回的值</string>
+    <string name="gyro">陀螺仪传感器返回的值</string>
+    <string name="magnetic">磁场传感器返回的值</string>
+    <string name="gravity">重力传感器返回的值</string>
+    <string name="linearAcc">线性加速度传感器返回的值</string>
+    <string name="temperature">温度传感器返回的值</string>
+    <string name="light">光传感器返回的值</string>
+    <string name="psensor_add">Psensor失败次数</string>
+    <string name="pressure">Psensor感器返回的值</string>
+    <string name="gsensor">Gsensor失败次数</string>
+    <string name="psensor">Psensor失败次数</string>
+    <string name="ecomtime">重力传感器失败次数</string>
+    <string name="show_total_time">唤醒总次数</string>
+    <string name="clean_history">清除记录</string>
+    <string name="wakeup_times">唤醒次数</string>
 </resources>

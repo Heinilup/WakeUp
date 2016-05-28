@@ -50,14 +50,14 @@
      android:layout_height="wrap_content">
         <Button
             android:onClick="click2"
-            android:text="唤醒次数"
+            android:text="@string/wakeup_times"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
             android:onClick="click1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="清除记录"/>
+            android:text="@string/clean_history"/>
     <Button
         android:id="@+id/StarRepeating"
         android:text="@string/hitstart"
@@ -75,12 +75,137 @@
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/showtime"
-            android:text="唤醒总次数"
-            android:textSize="30sp"
+            android:text="@string/show_total_time"
+            android:textSize="20sp"
             android:textColor="#58a10b"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/psensortime"
+            android:text="@string/psensor"
+            android:textSize="20sp"
+            android:textColor="#58a10b"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/gsersontime"
+            android:text="@string/gsensor"
+            android:textSize="20sp"
+            android:textColor="#58a10b"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/ecomtime"
+            android:text="@string/ecomtime"
+            android:textSize="20sp"
+            android:textColor="#58a10b"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/orientation" />
+        <EditText
+            android:id="@+id/etOrientation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:cursorVisible="false" />-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gyro" />
+        <EditText
+            android:id="@+id/etGyro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:cursorVisible="false" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/magnetic" />
+        <EditText
+            android:id="@+id/etMagnetic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:cursorVisible="false" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gravity" />
+        <EditText
+            android:id="@+id/etGravity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:cursorVisible="false" />
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/linearAcc" />
+        <EditText
+            android:id="@+id/etLinearAcc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:cursorVisible="false" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temperature" />
+        <EditText
+            android:id="@+id/etTemerature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:cursorVisible="false" />-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/light" />
+        <EditText
+            android:id="@+id/etLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:cursorVisible="false" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Psensor" />
+        <EditText
+            android:id="@+id/psensor_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:cursorVisible="false" />
+       <!-- <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pressure" />
+        <EditText
+            android:id="@+id/etPressure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:cursorVisible="false" />-->
+    </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

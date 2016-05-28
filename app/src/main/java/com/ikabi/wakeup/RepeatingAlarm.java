@@ -24,14 +24,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.PowerManager;
+import android.os.SystemClock;
 import android.util.Log;
 
 /**
  * This is an example of implement an {@link BroadcastReceiver} for an alarm that
  * should occur once.
  */
-public class RepeatingAlarm extends BroadcastReceiver
-{
+public class RepeatingAlarm extends BroadcastReceiver {
+    PowerManager pm;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -45,15 +46,31 @@ public class RepeatingAlarm extends BroadcastReceiver
         editor.putInt("count", ++count);
         // 提交修改
         editor.apply();
-        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.SCREEN_DIM_WAKE_LOCK, "bright");
+        pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK | PowerManager.SCREEN_DIM_WAKE_LOCK, "bright");
         Log.i("sj", "pm =" + wl);
         //点亮屏幕
         wl.acquire();
 
         //释放
-            wl.release();
+        wl.release();
 
+        startSleep();
+
+    }
+    private void startSleep(){
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    sleep(5000);
+                    pm.goToSleep(SystemClock.uptimeMillis());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
     }
 
     }
